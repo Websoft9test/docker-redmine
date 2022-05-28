@@ -14,6 +14,7 @@ services:
       REDMINE_DB_PASSWORD: $DB_MYSQL_PASSWORD
       REDMINE_SECRET_KEY_BASE: supersecretkey
       REDMINE_PLUGINS_MIGRATE: "true"
+      REDMINE_PASSWORD: $APP_PASSWORD
     command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
     configs:
       - source: my_cmd
