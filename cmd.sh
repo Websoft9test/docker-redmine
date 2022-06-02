@@ -1,6 +1,5 @@
 #! /bin/bash
 
-rails server -b 0.0.0.0
 apt update
 apt install -y mariadb-client
 app_pass=$(echo -n $REDMINE_PASSWORD | sha1sum|awk 'BEGIN{ORS=""}{print $1}'|sha1sum|awk '{print $1}')
