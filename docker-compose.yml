@@ -18,7 +18,8 @@ services:
       REDMINE_SECRET_KEY_BASE: supersecretkey
       REDMINE_PLUGINS_MIGRATE: "true"
       REDMINE_PASSWORD: $APP_PASSWORD
-    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"
+    entrypoint: ["/docker-entrypoint.sh","rails", "server", "-b", "0.0.0.0"]
+    command: " && cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"
     configs:
       - source: my_cmd
   
