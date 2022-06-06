@@ -19,7 +19,7 @@ services:
       REDMINE_PLUGINS_MIGRATE: "true"
       REDMINE_PASSWORD: $APP_PASSWORD
     entrypoint: ["/docker-entrypoint.sh","rails", "server", "-b", "0.0.0.0"]
-    command: [" && cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"]
+    command: ["cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"]
     #command: ["rails", "server", "-b", "0.0.0.0", " && cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"]
     depends_on:
       - db
