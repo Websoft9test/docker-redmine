@@ -18,14 +18,15 @@ services:
       REDMINE_SECRET_KEY_BASE: supersecretkey
       REDMINE_PLUGINS_MIGRATE: "true"
       REDMINE_PASSWORD: $APP_PASSWORD
-    entrypoint: ["/docker-entrypoint.sh","rails", "server", "-b", "0.0.0.0"]
-    command: "cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"
-    #command: ["rails", "server", "-b", "0.0.0.0", " && cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh"]
+    entrypoint:
+      - bash
+      - -c
+      - cat /my_cmd > cmd.sh && chmod +x /usr/src/redmine/cmd.sh && /usr/src/redmine/cmd.sh
     depends_on:
       - db
     configs:
       - source: my_cmd
-  
+
   db:
     image: mysql:$DB_MYSQL_VERSION
     container_name: $APP_NAME-db
